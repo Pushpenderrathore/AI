@@ -1,25 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Chat with My AI</title>
+  <title>LLaMA2 Chatbot</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>My LLaMA 2 AI Assistant</h1>
-  <textarea id="prompt" rows="4" cols="50" placeholder="Ask me anything..."></textarea><br>
+  <h1>Ask LLaMA 2</h1>
+  <textarea id="prompt" placeholder="Ask me anything..."></textarea><br>
   <button onclick="sendPrompt()">Send</button>
-  <pre id="response"></pre>
+  <div id="responseBox"></div>
 
-  <script>
-    async function sendPrompt() {
-      const prompt = document.getElementById("prompt").value;
-      const res = await fetch("https://your-backend-url.onrender.com/ask", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt })
-      });
-      const data = await res.json();
-      document.getElementById("response").innerText = data.response;
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

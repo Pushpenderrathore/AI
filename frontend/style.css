@@ -1,0 +1,3 @@
+body { font-family: sans-serif; text-align: center; margin: 40px; }
+textarea { width: 60%; height: 100px; margin-bottom: 10px; }
+#responseBox { margin-top: 20px; font-weight: bold; white-space: pre-line; }
