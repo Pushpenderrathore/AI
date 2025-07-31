@@ -11,7 +11,7 @@ def ask():
     prompt = data.get("prompt", "")
 
     response = requests.post(OLLAMA_URL, json={
-        "model": "llama2",
+        "model": "tinyllama",
         "prompt": prompt,
         "stream": False
     })
