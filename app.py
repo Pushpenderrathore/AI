@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import requests
 import os
 
 app = Flask(__name__)
+CORS(app) 
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
 
