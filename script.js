@@ -15,6 +15,7 @@ async function sendPrompt() {
     });
 
     if (!res.ok) {
+      const errorText = await res.text();  // sometimes server returns HTML/plain
       throw new Error(`Server error: ${res.status} ${res.statusText}`);
     }
 
