@@ -6,21 +6,24 @@ import os
 app = Flask(__name__)
 CORS(app) 
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
+OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434/api/generate")
 
 @app.route('/ask', methods=['POST'])
 def ask():
     data = request.json
     prompt = data.get("prompt", "")
 
-    response = requests.post(OLLAMA_URL, json={
-        "model": "tinyllama",
-        "prompt": prompt,
-        "stream": False
-    })
-
-    output = response.json()
-    return jsonify({"response": output.get("response", "")})
+    try:
+        response = requests.post(OLLAMA_URL, json={
+            "model": "tinyllama",
+            "prompt": prompt,
+            "stream": False
+        })
+        response.raise_for_status()
+        output = response.json()
+        return jsonify({"response": output.get("response", "")})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))  # Use Railway-assigned port
