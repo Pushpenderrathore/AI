@@ -22,7 +22,8 @@ async function sendPrompt() {
     const data = await res.json();
     responseDiv.textContent = data.response || "No response from AI.";
   } catch (err) {
-    responseDiv.textContent = "Error: " + error.message;
+    console.error(err);
+    responseDiv.textContent = "Error: " + err.message;
   }
 }
 
