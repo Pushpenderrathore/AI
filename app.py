@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 import os
+import traceback
 
 app = Flask(__name__)
 CORS(app) 
@@ -12,6 +13,8 @@ OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434/api/generate")
 def ask():
     data = request.json
     prompt = data.get("prompt", "")
+    print("Received prompt:", prompt)
+    print("Using OLLAMA_URL:", OLLAMA_URL)
 
     try:
         response = requests.post(OLLAMA_URL, json={
@@ -28,6 +31,7 @@ def ask():
 @app.route('/', methods=['GET'])
 def home():
     return "✅ Flask Ollama API is working. POST to /ask"
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))  # Use Railway-assigned port
