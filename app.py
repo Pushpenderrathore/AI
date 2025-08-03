@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app) 
 
 #OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434/api/generate")
-OLLAMA_URL = "https://mag-conviction-hu-yn.trycloudflare.com"
+OLLAMA_URL = "https://toward-doing-tuning-bm.trycloudflare.com"
 
 
 @app.route('/ask', methods=['POST'])
