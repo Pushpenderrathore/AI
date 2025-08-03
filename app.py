@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app) 
 
 #OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434/api/generate")
-OLLAMA_URL = "https://cfac42ead086.ngrok-free.app/api/generate"
+OLLAMA_URL = "https://ollama-test.loca.lt"
 
 
 @app.route('/ask', methods=['POST'])
