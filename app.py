@@ -7,7 +7,9 @@ import traceback
 app = Flask(__name__)
 CORS(app) 
 
-OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434/api/generate")
+#OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434/api/generate")
+OLLAMA_URL = "https://cfac42ead086.ngrok-free.app/api/generate"
+
 
 @app.route('/ask', methods=['POST'])
 def ask():
@@ -21,11 +23,16 @@ def ask():
             "model": "tinyllama",
             "prompt": prompt,
             "stream": False
-        })
+        } , timeout=60)
+        
         response.raise_for_status()
+        
         output = response.json()
+        
         return jsonify({"response": output.get("response", "")})
+    
     except Exception as e:
+        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
 @app.route('/', methods=['GET'])
