@@ -1,5 +1,6 @@
 // script.js
 const apiUrl = "https://rugby-hc-flashers-her.trycloudflare.com/ask";
+
 async function sendPrompt() {
   const prompt = document.getElementById('prompt').value;
   const responseDiv = document.getElementById('response');
@@ -7,7 +8,7 @@ async function sendPrompt() {
   try {
     responseDiv.textContent = "Thinking...";
 
-    const res = await fetch('https://ai-production-0bb3.up.railway.app/ask', {
+    const res = await fetch('https://rugby-hc-flashers-her.trycloudflare.com/ask', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
