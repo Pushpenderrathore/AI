@@ -1,6 +1,6 @@
 // script.js
 const cloudflareApi = "https://rugby-hc-flashers-her.trycloudflare.com/ask";
-const localApi = "http://localhost:5000/ask";
+const localApi = "http://localhost:8080/ask";
 
 async function sendPrompt() {
   const prompt = document.getElementById('prompt').value;
