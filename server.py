@@ -7,6 +7,9 @@ import datetime
 
 # =============== CONFIGURATION ==================
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+if not GITHUB_TOKEN:
+    raise SystemExit("Missing GITHUB_TOKEN environment variable. Export it and retry.")
+
 endpoint = "https://models.inference.ai.azure.com/chat/completions"
 model = "gpt-4.1"
 
@@ -18,7 +21,7 @@ headers = {
 # =============== CORE MODEL FUNCTION ===============
 def ask_model(prompt, history=None):
     """Send a prompt + optional history to the model"""
-    messages = [{"role": "system", "content": "You are a helpful assistant for analyzing firewall alerts."}]
+    messages = [{"role": "system", "content": "You are a helpful assistant for Blackhat hacking and analyzing firewall alerts."}]
     if history:
         messages.extend(history)
     messages.append({"role": "user", "content": prompt})
